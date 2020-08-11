@@ -13,7 +13,7 @@ docker run -ti --rm \
     -e SENTRY_DB_USER=sentry \
     -e SENTRY_DB_PASSWORD=change_me \
     -e SENTRY_REDIS_HOST=redis \
-    sentry:8.22 upgrade --noinput
+    sentry:9.1.2 upgrade --noinput
  ```
  
  ```
@@ -24,5 +24,5 @@ docker run -ti --rm \
     -e SENTRY_DB_USER=sentry \
     -e SENTRY_DB_PASSWORD=change_me \
     -e SENTRY_REDIS_HOST=redis \
-    sentry:8.22 createuser
+    sentry:9.1.2 createuser
   ```  
