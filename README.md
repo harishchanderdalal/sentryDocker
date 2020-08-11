@@ -1,0 +1,2 @@
+# sentryDocker
+Docker Stack Swarm
