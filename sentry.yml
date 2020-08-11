@@ -6,7 +6,7 @@ networks:
 
 services:
   web:
-    image: sentry:8.22
+    image: sentry:9.1.2
     environment:
       SENTRY_EMAIL_HOST: "my.smtp.com"
       SENTRY_EMAIL_PORT: 587
@@ -34,7 +34,7 @@ services:
       - 9000:9000
 
   cron:
-    image: sentry:8.22
+    image: sentry:9.1.2
     command: run cron
     environment:
       SENTRY_EMAIL_HOST: "my.smtp.com"
@@ -60,7 +60,7 @@ services:
     networks:
       - internal
   worker:
-    image: sentry:8.22
+    image: sentry:9.1.2
     command: run worker
     environment:
       SENTRY_EMAIL_HOST: "my.smtp.com"
