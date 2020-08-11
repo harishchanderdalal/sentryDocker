@@ -1,0 +1,110 @@
+version: "3.4"
+networks:
+  internal:
+    driver: overlay
+    attachable: true
+
+services:
+  web:
+    image: sentry:8.22
+    environment:
+      SENTRY_EMAIL_HOST: "my.smtp.com"
+      SENTRY_EMAIL_PORT: 587
+      SENTRY_EMAIL_USER: my_user
+      SENTRY_EMAIL_PASSWORD: "my_password"
+      SENTRY_EMAIL_USE_TLS: "true"
+      SENTRY_SECRET_KEY: "my_secret"
+      SENTRY_SERVER_EMAIL: "sentry@my_domain.com"
+      SENTRY_POSTGRES_HOST: "postgres"
+      SENTRY_DB_USER: "sentry"
+      SENTRY_DB_PASSWORD: change_me
+      SENTRY_REDIS_HOST: redis
+    depends_on:
+      - init
+      - redis
+      - postgres
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      - internal
+    ports:
+      - 9000:9000
+
+  cron:
+    image: sentry:8.22
+    command: run cron
+    environment:
+      SENTRY_EMAIL_HOST: "my.smtp.com"
+      SENTRY_EMAIL_PORT: 587
+      SENTRY_EMAIL_USER: my_user
+      SENTRY_EMAIL_PASSWORD: "my_password"
+      SENTRY_EMAIL_USE_TLS: "true"
+      SENTRY_SECRET_KEY: "my_secret"
+      SENTRY_SERVER_EMAIL: "sentry@my_domain.com"
+      SENTRY_POSTGRES_HOST: "postgres"
+      SENTRY_DB_USER: "sentry"
+      SENTRY_DB_PASSWORD: change_me
+      SENTRY_REDIS_HOST: redis
+    depends_on:
+      - init
+      - redis
+      - postgres
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - internal
+  worker:
+    image: sentry:8.22
+    command: run worker
+    environment:
+      SENTRY_EMAIL_HOST: "my.smtp.com"
+      SENTRY_EMAIL_PORT: 587
+      SENTRY_EMAIL_USER: my_user
+      SENTRY_EMAIL_PASSWORD: "my_password"
+      SENTRY_EMAIL_USE_TLS: "true"
+      SENTRY_SECRET_KEY: "my_secret"
+      SENTRY_SERVER_EMAIL: "sentry@my_domain.com"
+      SENTRY_POSTGRES_HOST: "postgres"
+      SENTRY_DB_USER: "sentry"
+      SENTRY_DB_PASSWORD: change_me
+      SENTRY_REDIS_HOST: redis
+    depends_on:
+      - init
+      - redis
+      - postgres
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      - internal
+
+  redis:
+    image: redis:alpine
+    networks:
+      - internal
+
+  postgres:
+    image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    environment:
+      POSTGRES_USER: sentry
+      POSTGRES_PASSWORD: change_me
+    networks:
+      - internal
+
+volumes:
+  pgdata:
