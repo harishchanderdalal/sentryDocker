@@ -34,18 +34,19 @@ Now, input your login password and click on the Next button again.
 ## Step 2
 Now, you need to make sure that your Google account is well protected to avoid any intervention when using the SMTP service; therefore, we recommend enabling the 2-step verification offered by Google. If you have already enabled the 2-step verification, then you may jump to Step# 3.
 
-## Step 3
-Log in to your Google account with your login credentials. First, enter your email address and click on Next button.
+## Step 3,a
+Now, you need to generate an App Password which will be used as well for the SMTP integration, so  Click Here to visit the Google App Passwords page to generate an App Password.
 ![AppPass](https://user-images.githubusercontent.com/22466745/90329761-0691ef00-dfc5-11ea-9be5-eb0bf207056d.png)
 
-## Step 4
+## Step 3,b
+Then, select app from the drop-down choice and choose Other (Custom name).
 Log in to your Google account with your login credentials. First, enter your email address and click on Next button.
 ![CPass](https://user-images.githubusercontent.com/22466745/90329763-08f44900-dfc5-11ea-9d1f-1a9ddb666b6a.png)
 
-## Step 5
-Log in to your Google account with your login credentials. First, enter your email address and click on Next button.
+## Step 3,c
+Give any name of your choice to your App password and click on GENERATE button. In this example, we are naming this app password as Business email.
 ![G1](https://user-images.githubusercontent.com/22466745/90329765-0a257600-dfc5-11ea-83cb-e47d9dcba4ca.png)
 
-## Step 6
+## Step 4
 Log in to your Google account with your login credentials. First, enter your email address and click on Next button.
 ![G2](https://user-images.githubusercontent.com/22466745/90329766-0abe0c80-dfc5-11ea-8f15-20102e00b9f6.png)
