@@ -1,4 +1,4 @@
-# sentryDocker
+# SentryDocker
 Docker Stack Swarm
 ```
 docker stack deploy -c sentry.yml sentry
