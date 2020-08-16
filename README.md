@@ -1,10 +1,8 @@
 # sentryDocker
 Docker Stack Swarm
-
 ```
 docker stack deploy -c sentry.yml sentry
 ```
-
 ```
 docker run -ti --rm \
     --network sentry_internal \
@@ -15,7 +13,6 @@ docker run -ti --rm \
     -e SENTRY_REDIS_HOST=redis \
     sentry:9.1.2 upgrade --noinput
  ```
- 
  ```
  docker run -ti --rm \
     --network sentry_internal \
@@ -25,10 +22,10 @@ docker run -ti --rm \
     -e SENTRY_DB_PASSWORD=change_me \
     -e SENTRY_REDIS_HOST=redis \
     sentry:9.1.2 createuser
-  ```  
-
-
+  ```
 # How to generate SMTP Gmail Token
+## Step 1
+Log in to your Google account with your login credentials. First, enter your email address and click on Next button.
 ![Gmail](https://user-images.githubusercontent.com/22466745/90329668-7fdd1200-dfc4-11ea-972e-57f1deb4af2d.png)
 ![GPassword](https://user-images.githubusercontent.com/22466745/90329683-97b49600-dfc4-11ea-845c-f550db02a656.png)
 ![AppPass](https://user-images.githubusercontent.com/22466745/90329761-0691ef00-dfc5-11ea-9be5-eb0bf207056d.png)
